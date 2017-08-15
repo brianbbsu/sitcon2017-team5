@@ -2,7 +2,7 @@ import telepot
 
 
 
-bot=telepot.Bot('425461487:AAE5JRdkXqrk9pRq54QDGd5-Xy2pU1tgCe4')
+bot=telepot.Bot('***REMOVED***')
 
 
 def write(data,msg):
