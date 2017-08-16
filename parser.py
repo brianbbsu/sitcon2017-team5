@@ -1,6 +1,6 @@
 import re
 from telepot.namedtuple import InlineKeyboardMarkup,InlineKeyboardButton
-from bot import read,write,answer_callback
+from bot import read,write,answer_callback,writepic
 
 while True:
 
@@ -20,6 +20,7 @@ while True:
 		write(data,"123")
 	elif data["type"]=="pic":
 		write(data,"this is a picture")
+		writepic(data,"This is also a picture","https://i.imgur.com/s5geZynl.jpg")
 	else:
 		write(data,"Unable to parse message.")
 

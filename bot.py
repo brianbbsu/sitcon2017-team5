@@ -12,6 +12,10 @@ def write(data,msg,keyboard=None):
 		bot.sendMessage(data["chat_id"],msg,reply_markup=keyboard)
 	print("[\033[1;32msend\033[1;m]"+" Message sent to "+data["user"]+" \""+msg.replace("\n", "\\n")+"\"")
 
+def writepic(data,msg,pic):
+	bot.sendPhoto(data["chat_id"],pic,msg)
+	print("[\033[1;32msend\033[1;m]"+" Pic sent to "+data["user"]+" \""+msg.replace("\n", "\\n")+"\"")
+
 def answer_callback(data,msg=None):
 	if msg==None:
 		bot.answerCallbackQuery(data["callback_id"])
