@@ -1,10 +1,9 @@
 import re
 import telepot
 from pprint import pprint
-from telepot.loop import MessageLoop
 
 
-bot=telepot.Bot('425461487:AAE5JRdkXqrk9pRq54QDGd5-Xy2pU1tgCe4')
+bot=telepot.Bot('342309989:AAFzdRL--BzhxFU3Wq_a6cLgJCul3KmjHfc')
 
 raw=bot.getUpdates()
 

@@ -19,9 +19,14 @@ def read():
 			data["user"]=data["user"]+raw['message']['from']['first_name']
 		if "last_name" in raw['message']['from']:
 			data["user"]=data["user"]+raw['message']['from']['last_name']
-		if "text" not in raw["message"]:
+		if "photo" in raw["message"] or "sticker" in raw["message"]:
 			data["type"]="pic"
 			print("[\033[1;34mread\033[1;m]"+" Picture get from "+data["user"])
+		elif "location" in raw["message"]:
+			data["type"]="loc"
+			data["lat"]=raw["message"]["location"]["latitude"]
+			data["long"]=raw["message"]["location"]["longitude"]
+			print("[\033[1;34mread\033[1;m]"+" Location get from "+data["user"]+" with latitude "+str(data["lat"])+" and longtitude "+str(data["long"]))
 		else:
 			data["type"]="text"
 			data["text"]=raw["message"]["text"]
