@@ -13,10 +13,10 @@ def show_selection(data):
     text = "{}，讓我幫你找找食物！"
     write(data, text.format(data['user']))
     replyKeyboard = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="麵包店🍞",callback_data="bread")],
-        [InlineKeyboardButton(text="咖啡廳🍵",callback_data="coffee")],
-        [InlineKeyboardButton(text="餐廳🍛",callback_data="restaurant")],
-        [InlineKeyboardButton(text="酒吧🍺",callback_data="bar")],
+        [InlineKeyboardButton(text="麵包店🍞",callback_data="tp0")],
+        [InlineKeyboardButton(text="咖啡廳🍵",callback_data="tp1")],
+        [InlineKeyboardButton(text="餐廳🍛",callback_data="tp2")],
+        [InlineKeyboardButton(text="酒吧🍺",callback_data="tp3")],
 
     ])
     write(data, "要選擇什麼類型的食物呢？",replyKeyboard)
