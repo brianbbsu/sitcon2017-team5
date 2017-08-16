@@ -12,7 +12,7 @@ def get_search(lat,lng,tp):
 	raw=requests.get(base+place)
 	js=json.loads(raw.text)
 	#pprint(js)
-	#print(base+place)
+	print(base+place)
 	if len(js["results"]) < 4:
 		return None
 	else:
