@@ -6,15 +6,18 @@ bot=telepot.Bot('***REMOVED***')
 
 
 def write(data,msg,keyboard=None):
-	bot.sendMessage(data["chat_id"],msg)
+	if keyboard==None:
+		bot.sendMessage(data["chat_id"],msg)
+	else:
+		bot.sendMessage(data["chat_id"],msg,reply_markup=keyboard)
 	print("[\033[1;32msend\033[1;m]"+" Message sent to "+data["user"]+" \""+msg.replace("\n", "\\n")+"\"")
 
 def answer_callback(data,msg=None):
 	if msg==None:
-		bot.answerCallbackQuery(data["update_id"])
+		bot.answerCallbackQuery(data["callback_id"])
 		print("[\033[1;32msend\033[1;m]"+" Answered callback from "+data["user"])
 	else:
-		bot.answerCallbackQuery(data["update_id"],msg)
+		bot.answerCallbackQuery(data["callback_id"],msg)
 		print("[\033[1;32msend\033[1;m]"+" Answered callback from "+data["user"]+" with msg \""+msg.replace("\n", "\\n")+"\"")
 
 def read():
@@ -42,13 +45,13 @@ def read():
 				data["text"]=raw["message"]["text"]
 				print("[\033[1;34mread\033[1;m]"+" Message get from "+data["user"]+" \""+data["text"].replace("\n", "\\n")+"\"")
 		elif "callback_query" in raw:
+			data={"user_id":raw['callback_query']['from']['id'],"user":"","chat_id":raw['callback_query']["message"]["chat"]['id']}
 			data["type"]="callback"
-			data={"user_id":raw['callback_query']['from']['id'],"user":"","chat_id":raw['callback_query']['chat']["id"]}
 			if "first_name" in raw['callback_query']['from']:
 				data["user"]=data["user"]+raw['callback_query']['from']['first_name']
 			if "last_name" in raw['callback_query']['from']:
 				data["user"]=data["user"]+raw['callback_query']['from']['last_name']
-			data["update_id"]=raw["update_id"]	
+			data["callback_id"]=raw["callback_query"]["id"]	
 			data["data"]=raw["callback_query"]["data"]
 			print("[\033[1;34mread\033[1;m]"+" Callback get from "+data["user"]+" \""+data["data"].replace("\n", "\\n")+"\"")
 		else:
