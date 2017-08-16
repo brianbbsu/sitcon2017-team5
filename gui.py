@@ -39,9 +39,9 @@ def show_information(data, restaurant, index):
         [InlineKeyboardButton(text="⤴️上一頁",callback_data="return2")],
     ])
     write(data,  "以下為此店家的相關資訊：\n"
-                                "🏠店名："+  restaurant[index]['name'] +  "\n"
-                                "📞電話："   " ---電話--- " + "\n"
-                                "🚲距離："+  str(restaurant[index]['dis']) + "\n"
-                                "📝地址："   +" ---地址--- " + "\n"
+								"🏠店名："+  restaurant[index]['name'] +  "\n"
+								                                "📞電話："   " ---電話--- " + "\n"
+																                                "🚲距離："+  str(restaurant[index]['dis']) + "\n"
+																								"📝地址：" +" ---地址--- " + "\n"
                                 ,replyKeyboard)
 
