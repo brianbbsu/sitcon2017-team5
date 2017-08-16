@@ -1,4 +1,5 @@
 import re
+from telepot.namedtuple import InlineKeyboardMarkup,InlineKeyboardButton
 from bot import read,write,answer_callback
 
 while True:
@@ -8,8 +9,10 @@ while True:
 
 	if data==None:
 		continue
-	elif data["type"]=="text":
-		write(data,"hi")
+	print(data)
+	if data["type"]=="text":
+		keyboard=InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="Ok",callback_data="btn_ok")]])
+		write(data,"hi",keyboard)
 	elif data["type"]=="location":
 		write(data,"Thank you for your location")
 	elif data["type"]=="callback":
