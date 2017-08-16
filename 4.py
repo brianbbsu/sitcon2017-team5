@@ -10,7 +10,7 @@ while True:
 		continue
 
 	try:
-		if data["type"]=="pic":
+		if data["type"]!="text":
 			raise
 		s=data["text"]
 		if s[0]=='/':
