@@ -31,7 +31,7 @@ def show_store(data, restaurant):
         [InlineKeyboardButton(text="✔️" +  restaurant[3]['name'] +  "\n (距離：" +  str(restaurant[3]['dis']) +  "m)", callback_data="store3")],
         [InlineKeyboardButton(text="⤴️上一頁",callback_data="return1")],
     ])
-    write(data, "以下取距離最近的4家店家：", replyKeyboard)
+    write(data, "以下為距離您最近的 4 家店家：", replyKeyboard)
 
 
 def show_information(data, restaurant, index):
@@ -39,7 +39,7 @@ def show_information(data, restaurant, index):
         [InlineKeyboardButton(text="⤴️上一頁",callback_data="return2")],
     ])
     write(data,  "以下為此店家的相關資訊：\n"
-                                "🏠商家："+  restaurant[index]['name'] +  "\n"
+                                "🏠店名："+  restaurant[index]['name'] +  "\n"
                                 "📞電話："   " ---電話--- " + "\n"
                                 "🚲距離："+  str(restaurant[index]['dis']) + "\n"
                                 "📝地址："   +" ---地址--- " + "\n"
