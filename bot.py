@@ -40,10 +40,13 @@ def read():
 				data["lat"]=raw["message"]["location"]["latitude"]
 				data["long"]=raw["message"]["location"]["longitude"]
 				print("[\033[1;34mread\033[1;m]"+" Location get from "+data["user"]+" with latitude "+str(data["lat"])+" and longtitude "+str(data["long"]))
-			else:
+			elif "text" in raw["message"]:
 				data["type"]="text"
 				data["text"]=raw["message"]["text"]
 				print("[\033[1;34mread\033[1;m]"+" Message get from "+data["user"]+" \""+data["text"].replace("\n", "\\n")+"\"")
+			else:
+				data["type"]="error"	
+				print("[\033[1;34mread\033[1;m]"+" Bad request get from "+data["user"])
 		elif "callback_query" in raw:
 			data={"user_id":raw['callback_query']['from']['id'],"user":"","chat_id":raw['callback_query']["message"]["chat"]['id']}
 			data["type"]="callback"
