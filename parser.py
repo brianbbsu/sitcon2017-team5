@@ -31,7 +31,10 @@ while True:
 		loc["long"]=data["long"]
 		if tp!="":
 			rt=get_search(loc["lat"],loc["long"],tp)
-			gui.show_store(data,rt)
+			if rt==None:
+				write(data,"Sorry, no enough information.")
+			else: 
+				gui.show_store(data,rt)
 		else:
 			gui.show_selection(data)	
 			
@@ -42,7 +45,10 @@ while True:
 			tp=["bakery","cafe","restaurant","bar"][int(data["data"][2])]
 			if loc["lat"]!=0 or loc["long"]!=0:
 				rt=get_search(loc["lat"],loc["long"],tp)
-				gui.show_store(data,rt)
+				if rt==None:
+					write(data,"Sorry, no enough information.")
+				else: 
+					gui.show_store(data,rt)
 			else:
 				write(data,"請傳送您的位置")
 		elif data["data"]=="return1":
