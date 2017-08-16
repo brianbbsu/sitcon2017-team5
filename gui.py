@@ -40,8 +40,8 @@ def show_information(data, restaurant, index):
     ])
     write(data,  "以下為此店家的相關資訊：\n"
 								"🏠店名："+  restaurant[index]['name'] +  "\n"
-								                                "📞電話："   " ---電話--- " + "\n"
-																                                "🚲距離："+  str(restaurant[index]['dis']) + "\n"
-																								"📝地址：" +" ---地址--- " + "\n"
+								                                "📞電話：" + restaurant[index]['tel'] + "\n"
+																                                "🚲距離："+  str(restaurant[index]['dis']) + "m\n"
+																								"📝地址：" +restaurant[index]['add'] + "\n"
                                 ,replyKeyboard)
 
