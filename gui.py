@@ -10,7 +10,6 @@ from telepot.namedtuple import (
 
 def show_selection(data):
 
-    write(data, text.format(data['user']))
     replyKeyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="🍞 麵包店",callback_data="tp0")],
         [InlineKeyboardButton(text="☕️ 咖啡廳",callback_data="tp1")],
