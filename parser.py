@@ -5,6 +5,7 @@ import gui
 from search import get_search
 from detail import get_detail
 from location import get_location
+from weather import weather
 
 stat={}
 loc = {}
@@ -78,8 +79,12 @@ while True:
 			gui.show_selection(data)	
 		elif data["data"]=="return2":
 			gui.show_store(data,rt[uid])
-		elif data["data"]=="ok":
-			pass
+		elif data["data"]=="OK":
+			write(data,"祝你有個美好的用餐時光~")
+			data["lat"]=loc[uid]["lat"]
+			data["long"]=loc[uid]["long"]
+			weather(data)
+			reset(uid)
 		else:
 			t=int(data["data"][5])
 			tmprt=get_detail(rt[uid][t]["id"])
