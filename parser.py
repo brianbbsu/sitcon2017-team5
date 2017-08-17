@@ -80,10 +80,11 @@ while True:
 		elif data["data"]=="return2":
 			gui.show_store(data,rt[uid])
 		elif data["data"]=="OK":
-			write(data,"祝你有個美好的用餐時光~")
+			write(data,"以下是現在的天氣狀況：")
 			data["lat"]=loc[uid]["lat"]
 			data["long"]=loc[uid]["long"]
 			weather(data)
+			write(data,"祝你有個美好的用餐時光~")
 			reset(uid)
 		else:
 			t=int(data["data"][5])
