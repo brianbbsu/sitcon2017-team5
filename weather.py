@@ -15,7 +15,7 @@ def weather(data):
     elif weather_status.find('晴')!=-1:
         weather_text='請注意防曬再出門，以免紫外線傷害皮膚'
     elif weather_status.find('雨')!=-1:
-        weather_text='請攜帶雨具出門，注意淋濕感冒了'
+        weather_text='請攜帶雨具出門，注意別淋濕感冒了'
     elif weather_status.find('雪')!=-1:
         weather_text='出門要注意保暖喔'
 
