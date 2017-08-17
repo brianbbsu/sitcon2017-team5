@@ -11,7 +11,7 @@ def weather(data):
         weather_icon=weather_bot2['icon']
     weather_temp=weather_bot["main"]["temp"]
     if weather_status.find('雲')!=-1:
-        weather_text='天氣多變請攜帶雨具再出門'
+        weather_text='出門要注意安全掰掰'
     elif weather_status.find('晴')!=-1:
         weather_text='請注意防曬再出門，以免紫外線傷害皮膚'
     elif weather_status.find('雨')!=-1:
