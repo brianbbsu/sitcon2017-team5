@@ -40,6 +40,10 @@ while True:
 				write(data, text.format(data['user']))
 				#gui.show_selection(data)
 			elif uid not in stat or stat[uid]!=0:
+				if data["text"].find("安安")!=-1:
+					write(data,"安安你好，想吃些什麼呢?")
+				if data["text"].find("互相傷害")!=-1:
+					write(data,"好阿來互相傷害阿")
 				write(data,"請輸入/start來開始找食物")
 			else:
 				tmp=get_location(data["text"])
