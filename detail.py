@@ -3,8 +3,9 @@ import json
 import urllib
 from bot import read
 from pprint import pprint
+import conf
 
-base="https://maps.googleapis.com/maps/api/place/details/json?key=***REMOVED***&placeid="
+base="https://maps.googleapis.com/maps/api/place/details/json?key="+conf.googlemap_apikey2+"&placeid="
 
 def get_detail(pid):
 	raw=requests.get(base+str(pid))
@@ -27,11 +28,3 @@ def get_detail(pid):
 	
 	pprint(rt)
 	return rt
-'''
-while 1:
-	data=read()
-	if data==None or data["type"]!="location":
-		continue
-	get_search(data["lat"],data["long"],"restaurant")
-	break
-'''

@@ -7,6 +7,7 @@ from detail import get_detail
 from location import get_location
 from weather import weather
 import sys
+import time
 
 stat={}
 loc = {}
@@ -108,4 +109,4 @@ while True:
 	except KeyboardInterrupt:
 		raise;
 	except:
-		print("\033[1;31mUnexpected error: "+str(sys.exc_info())+"\033[1;m")
+		print(time.ctime()+" \033[1;31mUnexpected error: "+str(sys.exc_info())+"\033[1;m")
