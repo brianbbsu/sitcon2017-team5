@@ -4,8 +4,9 @@ import urllib
 from bot import read
 from geopy.distance import vincenty
 from pprint import pprint
+import conf
 
-base="https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyBeqKyY86QL_Ao23mEyDUGFuj7bjyag2Og&rankby=distance&opennow=1"
+base="https://maps.googleapis.com/maps/api/place/nearbysearch/json?key="+conf.googlemap_apikey2+"&rankby=distance"#&opennow=1"
 
 def get_search(lat,lng,tp):
 	place="&location="+str(lat)+","+str(lng)+"&type="+tp
@@ -28,11 +29,3 @@ def get_search(lat,lng,tp):
 			rt.append(tmp)
 		pprint(rt)
 	return rt
-'''
-while 1:
-	data=read()
-	if data==None or data["type"]!="location":
-		continue
-	get_search(data["lat"],data["long"],"restaurant")
-	break
-'''

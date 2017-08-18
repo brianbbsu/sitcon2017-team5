@@ -1,11 +1,12 @@
 import telepot
+import conf
+import time
 
-
-
-bot=telepot.Bot('342309989:AAFzdRL--BzhxFU3Wq_a6cLgJCul3KmjHfc')
+bot=telepot.Bot(conf.telegrambot_token)
 
 
 def write(data,msg,keyboard=None):
+	print(time.ctime(),end=" ")
 	if keyboard==None:
 		bot.sendMessage(data["chat_id"],msg)
 	else:
@@ -13,10 +14,12 @@ def write(data,msg,keyboard=None):
 	print("[\033[1;32msend\033[1;m]"+" Message sent to "+data["user"]+" \""+msg.replace("\n", "\\n")+"\"")
 
 def writepic(data,msg,pic):
+	print(time.ctime(),end=" ")
 	bot.sendPhoto(data["chat_id"],pic,msg)
 	print("[\033[1;32msend\033[1;m]"+" Pic sent to "+data["user"]+" \""+msg.replace("\n", "\\n")+"\"")
 
 def answer_callback(data,msg=None):
+	print(time.ctime(),end=" ")
 	if msg==None:
 		bot.answerCallbackQuery(data["callback_id"])
 		print("[\033[1;32msend\033[1;m]"+" Answered callback from "+data["user"])
@@ -31,6 +34,7 @@ def read():
 		bot.getUpdates(raw["update_id"]+1)
 		data={}
 		if "message" in raw:
+			print(time.ctime(),end=" ")
 			data={"user_id":raw['message']['from']['id'],"user":"","chat_id":raw['message']['chat']["id"]}
 			if "first_name" in raw['message']['from']:
 				data["user"]=data["user"]+raw['message']['from']['first_name']
@@ -52,6 +56,7 @@ def read():
 				data["type"]="error"	
 				print("[\033[1;34mread\033[1;m]"+" Bad request get from "+data["user"])
 		elif "callback_query" in raw:
+			print(time.ctime(),end=" ")
 			data={"user_id":raw['callback_query']['from']['id'],"user":"","chat_id":raw['callback_query']["message"]["chat"]['id']}
 			data["type"]="callback"
 			if "first_name" in raw['callback_query']['from']:

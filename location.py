@@ -2,10 +2,11 @@ import requests
 import json
 import urllib
 from pprint import pprint
+import conf
 
-base="https://maps.googleapis.com/maps/api/place/autocomplete/json?key=AIzaSyBeqKyY86QL_Ao23mEyDUGFuj7bjyag2Og&input="
+base="https://maps.googleapis.com/maps/api/place/autocomplete/json?key="+conf.googlemap_apikey+"&input="
 
-base2="https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyBeqKyY86QL_Ao23mEyDUGFuj7bjyag2Og&placeid="
+base2="https://maps.googleapis.com/maps/api/place/details/json?key="+conf.googlemap_apikey+"&placeid="
 
 def get_location(s):
 	
@@ -33,11 +34,3 @@ def get_location(s):
 	
 	pprint(rt)
 	return rt
-'''
-while 1:
-	data=read()
-	if data==None or data["type"]!="location":
-		continue
-	get_search(data["lat"],data["long"],"restaurant")
-	break
-'''
