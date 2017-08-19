@@ -10,7 +10,7 @@ def weather(data):
         weather_status=weather_bot2["description"]
         weather_icon=weather_bot2['icon']
     weather_temp=weather_bot["main"]["temp"]
-	weather_text='出門要注意安全掰掰'
+    weather_text='出門要注意安全掰掰'
     if weather_status.find('雲')!=-1:
         weather_text='出門要注意安全掰掰'
     elif weather_status.find('晴')!=-1:
