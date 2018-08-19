@@ -8,7 +8,7 @@ from location import get_location
 from weather import weather
 import sys
 import time
-
+from logger import Logger
 
 class Parser:
     def __init__(self):
@@ -115,9 +115,9 @@ class Parser:
                 else:
                     write(data,"Unable to parse message.")
             except KeyboardInterrupt:
-                raise;
+                raise
             except:
-                print(time.ctime()+" \033[1;31mUnexpected error: "+str(sys.exc_info())+"\033[1;m")
+                Logger.log(Logger.ERROR,"%s",str(sys.exc_info()))
         
     def stop(self):
         print("Stopping")
