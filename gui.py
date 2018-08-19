@@ -19,7 +19,7 @@ def show_selection(data):
     write(data, "要選擇什麼類型的食物呢？",replyKeyboard)
 
 
-def show_store(data, restaurant):
+def show_stores(data, restaurant):
     
     replyKeyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="✔️" +  restaurant[0]['name'] +  "\n (" +  str(restaurant[0]['dis']) +  "m)", callback_data="store0")],
