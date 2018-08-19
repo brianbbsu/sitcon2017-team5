@@ -1,6 +1,6 @@
 import json
 import time
-from bot import write
+from bot import write,write_location
 from telepot.namedtuple import (
     ReplyKeyboardMarkup, 
     KeyboardButton,
@@ -36,10 +36,10 @@ def show_information(data, restaurant, index):
         [InlineKeyboardButton(text="⤴️上一頁",callback_data="return2")],
         [InlineKeyboardButton(text="👌OK",callback_data="OK")]
     ])
+    write_location(data, restaurant[index]['name'],restaurant[index]['lat'], restaurant[index]['long'],restaurant[index]['add'])
     write(data, "以下為此店家的相關資訊：\n"
 				"🏠 店名："+  restaurant[index]['name'] +  "\n"
 				"📞 電話：" + restaurant[index]['tel'] + "\n"
                 "🚲 距離："+  str(restaurant[index]['dis']) + "m\n"
                 "📝 地址：" +restaurant[index]['add'] + "\n"
                          ,replyKeyboard)
-

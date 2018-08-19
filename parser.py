@@ -53,7 +53,7 @@ class Parser:
                             write(data,"安安你好，想吃些什麼呢?")
                         if data["text"].find("互相傷害")!=-1:
                             write(data,"好阿來互相傷害阿")
-                        write(data,"請輸入/start來開始找食物")
+                        write(data,"請輸入 /start 來開始找食物")
                     else:
                         tmp=get_location(data["text"])
                         if tmp==None:
@@ -64,7 +64,7 @@ class Parser:
                             self.stat[uid]=1
                             gui.show_selection(data)
                 elif uid not in self.stat:
-                    write(data,"請輸入/start來開始找食物")
+                    write(data,"請輸入 /start 來開始找食物")
                 elif data["type"]=="location":
                     self.loc[uid]["lat"]=data["lat"]
                     self.loc[uid]["long"]=data["long"]

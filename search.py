@@ -6,7 +6,7 @@ from geopy.distance import vincenty
 from pprint import pprint
 import conf
 
-base="https://maps.googleapis.com/maps/api/place/nearbysearch/json?key="+conf.googlemap_apikey+"&rankby=distance"#&opennow=1"
+base="https://maps.googleapis.com/maps/api/place/nearbysearch/json?language=zh-TW&key="+conf.googlemap_apikey+"&rankby=distance"#&opennow=1"
 
 def get_search(lat,lng,tp):
 	place="&location="+str(lat)+","+str(lng)+"&type="+tp

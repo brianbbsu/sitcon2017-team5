@@ -13,6 +13,13 @@ def write(data,msg,keyboard=None):
 		bot.sendMessage(data["chat_id"],msg,reply_markup=keyboard)
 	Logger.log(Logger.SEND,"Message sent to %s \"%s\"",data['user'],msg.replace("\n", "\\n"))
 
+def write_location(data,title,lat,long,addr,keyboard=None):
+	if keyboard==None:
+		bot.sendVenue(data["chat_id"],lat,long,title,addr)
+	else:
+		bot.sendMessage(data["chat_id"],title,reply_markup=keyboard)
+	Logger.log(Logger.SEND,"Location sent to %s \"%s\"",data['user'],title)
+
 def writepic(data,msg,pic):
 	bot.sendPhoto(data["chat_id"],pic,msg)
 	Logger.log(Logger.SEND,"Pic sent to %s \"%s\"",data['user'],msg.replace("\n", "\\n"))

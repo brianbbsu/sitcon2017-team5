@@ -25,4 +25,3 @@ class Logger:
             prep = cls.color_code["red"] + "error" + cls.color_code["clear"]
         
         print(time.ctime() + " [" + prep + "] " + msg)
-        
