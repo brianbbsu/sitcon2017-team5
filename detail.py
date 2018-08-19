@@ -5,7 +5,7 @@ from bot import read
 from pprint import pprint
 import conf
 
-base="https://maps.googleapis.com/maps/api/place/details/json?key="+conf.googlemap_apikey2+"&placeid="
+base="https://maps.googleapis.com/maps/api/place/details/json?key="+conf.googlemap_apikey+"&placeid="
 
 def get_detail(pid):
 	raw=requests.get(base+str(pid))
