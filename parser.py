@@ -83,8 +83,7 @@ class Parser:
                             write(data,"請直接輸入您所在的位置或是傳送手機的定位資訊\n我將會幫你搜尋附近的食物：")
                         else:
                             tmprt=get_detail(self.result_list[uid][t]["id"])
-                            self.result_list[uid][t]["add"]=tmprt["add"]
-                            self.result_list[uid][t]["tel"]=tmprt["tel"]
+                            self.result_list[uid][t].update(tmprt)
                             gui.show_information(data,self.result_list[uid],t)
                 else:
                     write(data,"請直接輸入您所在的位置或是傳送手機的定位資訊\n我將會幫你搜尋附近的食物：")

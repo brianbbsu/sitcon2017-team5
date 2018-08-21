@@ -38,8 +38,10 @@ def show_information(data, restaurant, index):
     ])
     write_location(data, restaurant[index]['name'],restaurant[index]['lat'], restaurant[index]['long'],restaurant[index]['add'])
     write(data, "以下為此店家的相關資訊：\n"
-				"🏠 店名："+  restaurant[index]['name'] +  "\n"
+				"🏠 店名：" + restaurant[index]['name'] +  "\n"
 				"📞 電話：" + restaurant[index]['tel'] + "\n"
-                "🚲 距離："+  str(restaurant[index]['dis']) + "m\n"
-                "📝 地址：" +restaurant[index]['add'] + "\n"
-                         ,replyKeyboard)
+                "🚲 距離：" + str(restaurant[index]['dis']) + "m\n"
+                "📝 地址：" + restaurant[index]['add'] + "\n"
+                "📊 評等：" + "⭐" * restaurant[index]["rating_rounded"] + restaurant[index]["rating_string"] + "\n"
+                "⏰ 營業：" + restaurant[index]["open"] + "\n"
+                ,replyKeyboard)

@@ -18,13 +18,32 @@ def get_detail(pid):
 	if "formatted_address" in js["result"]:
 		rt["add"]=js["result"]["formatted_address"]
 	else:
-		rt["add"]="N/A"
+		rt["add"]="未知"
 
 		
 	if "formatted_phone_number" in js["result"]:
 		rt["tel"]=str(js["result"]["formatted_phone_number"])
 	else:
-		rt["tel"]="N/A"
+		rt["tel"]="未知"
+
+	if "rating" in js["result"]:
+		rt["rating"] = js["result"]["rating"]
+		rt["rating_rounded"] = round(js["result"]["rating"])
+		rt["rating_string"] = " " + ("%0.1f" % js["result"]["rating"]) + " / 5"
+	else:
+		rt["rating"] = 0
+		rt["rating_rounded"] = 0
+		rt["rating_string"] = "未知"
+	
+	if "permanently_closed" in js["result"]:
+		rt["open"] = "永久停業"
+	elif "opening_hours" in js["result"] and "open_now" in js["result"]["opening_hours"]:
+		if  js["result"]["opening_hours"]["open_now"]:
+			rt["open"] = "營業中"
+		else:
+			rt["open"] = "休息中"
+	else:
+		rt["open"] = "未知"
 	
 	pprint(rt)
 	return rt
