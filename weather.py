@@ -3,9 +3,9 @@ import json
 
 from bot import write,writepic
 
-def weather(data):
-    lat=data["lat"]
-    lon=data["long"]
+def weather(data,location):
+    lat=location["lat"]
+    lon=location["long"]
     weather_a=requests.get("http://api.openweathermap.org/data/2.5/weather?lang=zh_tw&units=metric&lat={}&lon={}&appid=9ec4e2aec0d50139161b0722fc392f15".format(lat,lon))
     weather_bot=json.loads(weather_a.text)
     for weather_bot2 in weather_bot["weather"]:

@@ -51,20 +51,23 @@ def get_search(lat,lng,tp):
 	raw=requests.get(nearby_search_url, params=payload)
 	js=json.loads(raw.text)
 	print(raw.url)
-	if len(js["results"]) < 4:
+	if len(js["results"]) == 0:
 		return None
-	else:
-		rt=[]
-		for i in range(0,4):
-			dt=js["results"][i]
-			tmp={}
-			tmp["lat"]=dt["geometry"]["location"]["lat"]
-			tmp["long"]=dt["geometry"]["location"]["lng"]
-			tmp["name"]=dt["name"]
-			tmp["id"]=dt["place_id"]
-			tmp["dis"]=int(vincenty((lat,lng),(tmp["lat"],tmp["long"])).meters)
-			rt.append(tmp)
-		pprint(rt)
+
+	if len(js["results"]) > 4:
+		js["results"] = js["results"][:4]
+
+	rt=[]
+	for dt in js["results"]:
+		tmp={
+			"lat": dt["geometry"]["location"]["lat"],
+			"long": dt["geometry"]["location"]["lng"],
+			"name": dt["name"],
+			"id": dt["place_id"],
+			"dis": int(vincenty((lat,lng),(dt["geometry"]["location"]["lat"],dt["geometry"]["location"]["lng"])).meters)
+		}
+		rt.append(tmp)
+	pprint(rt)
 	return rt
 
 def get_detail(pid):

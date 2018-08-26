@@ -102,3 +102,4 @@ ENV/
 
 *conf.py
 .vscode
+data
