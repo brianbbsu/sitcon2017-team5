@@ -7,22 +7,22 @@ bot=telepot.Bot(conf.telegrambot_token)
 
 
 def write(data,msg,keyboard=None):
-	if keyboard==None:
-		bot.sendMessage(data["chat_id"],msg)
-	else:
-		bot.sendMessage(data["chat_id"],msg,reply_markup=keyboard)
 	Logger.log(Logger.SEND,"Message sent to %s \"%s\"",data['user'],msg.replace("\n", "\\n"))
+	if keyboard==None:
+		return bot.sendMessage(data["chat_id"],msg)
+	else:
+		return bot.sendMessage(data["chat_id"],msg,reply_markup=keyboard)
 
 def write_location(data,title,lat,long,addr,keyboard=None):
-	if keyboard==None:
-		bot.sendVenue(data["chat_id"],lat,long,title,addr)
-	else:
-		bot.sendMessage(data["chat_id"],title,reply_markup=keyboard)
 	Logger.log(Logger.SEND,"Location sent to %s \"%s\"",data['user'],title)
+	if keyboard==None:
+		return bot.sendVenue(data["chat_id"],lat,long,title,addr)
+	else:
+		return bot.sendMessage(data["chat_id"],title,reply_markup=keyboard)
 
 def writepic(data,msg,pic):
-	bot.sendPhoto(data["chat_id"],pic,msg)
 	Logger.log(Logger.SEND,"Pic sent to %s \"%s\"",data['user'],msg.replace("\n", "\\n"))
+	return bot.sendPhoto(data["chat_id"],pic,msg)
 
 def answer_callback(data,msg=None):
 	if msg==None:
@@ -39,15 +39,12 @@ def read():
 		bot.getUpdates(raw["update_id"]+1)
 		data={}
 		if "message" in raw:
-			data={"user_id":raw['message']['from']['id'],"user":"","chat_id":raw['message']['chat']["id"]}
+			data={"user_id":raw['message']['from']['id'],"user":"","chat_id":raw['message']['chat']["id"],"message_id": raw['message']['message_id']}
 			if "first_name" in raw['message']['from']:
 				data["user"]=data["user"]+raw['message']['from']['first_name']
 			if "last_name" in raw['message']['from']:
 				data["user"]=data["user"]+raw['message']['from']['last_name']
-			if "photo" in raw["message"] or "sticker" in raw["message"]:
-				data["type"]="pic"
-				Logger.log(Logger.READ,"Picture get from %s",data["user"])
-			elif "location" in raw["message"]:
+			if "location" in raw["message"]:
 				data["type"]="location"
 				data["lat"]=raw["message"]["location"]["latitude"]
 				data["long"]=raw["message"]["location"]["longitude"]
@@ -60,7 +57,7 @@ def read():
 				data["type"]="error"	
 				Logger.log(Logger.READ,"Bad request get from %s",data["user"])
 		elif "callback_query" in raw:
-			data={"user_id":raw['callback_query']['from']['id'],"user":"","chat_id":raw['callback_query']["message"]["chat"]['id']}
+			data={"user_id":raw['callback_query']['from']['id'],"user":"","chat_id":raw['callback_query']["message"]["chat"]['id'],"message_id": raw['callback_query']["message"]["message_id"]}
 			data["type"]="callback"
 			if "first_name" in raw['callback_query']['from']:
 				data["user"]=data["user"]+raw['callback_query']['from']['first_name']

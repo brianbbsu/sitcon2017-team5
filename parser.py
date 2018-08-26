@@ -1,14 +1,11 @@
-import re
-from telepot.namedtuple import InlineKeyboardMarkup,InlineKeyboardButton
-from bot import read,write,answer_callback,writepic
-import gui
-from search import get_search
-from detail import get_detail
-from location import get_location
-from weather import weather
 import sys
 import time
+
+from bot import read, write, answer_callback, writepic
+import gui
 from logger import Logger
+from map_utils import get_location, get_search, get_detail
+from weather import weather
 
 class Parser:
     def __init__(self):
@@ -31,8 +28,9 @@ class Parser:
                 if not self.running:
                     return
 
-                if data == None:
+                if data == None or data["type"] == "error":
                     continue
+
                 print(data)
 
                 uid = data["user_id"]

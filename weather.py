@@ -1,6 +1,8 @@
 import requests
 import json
+
 from bot import write,writepic
+
 def weather(data):
     lat=data["lat"]
     lon=data["long"]
@@ -22,7 +24,3 @@ def weather(data):
 
     writepic(data,"天氣:{}，氣溫:{}".format(weather_status,round(weather_temp) ),"http://openweathermap.org/img/w/{}.png".format(weather_icon))
     write(data,weather_text)
-   # print(data,"天氣:{}，氣溫:{}，http://openweathermap.org/img/w/{}.png".format(weather_status,round(weather_temp),weather_icon ))
-    #print(data,weather_text)
-#data={'lat':'25.0214484','lon':'121.3178532'}
-#weather(data)

@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-from parser import Parser
 import threading
-from logger import Logger
 
-parser = Parser()
+from logger import Logger
+from parser import Parser
+
 
 if __name__ == '__main__':
+    parser = Parser()
     thd = threading.Thread(target = parser.run)
     thd.start()
     Logger.log(Logger.INFO,"Bot Running ...")
